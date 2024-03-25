@@ -48,14 +48,20 @@ function App() {
     }
   },[city])
 
- 
+  const handleCityChange = (city) => {
+    if (city === "current") {
+      setCity(null);
+    } else {
+      setCity(city);
+    }
+  };
 
   return (
     <div>
       {loading?(<div className='container'><ClipLoader color="#f86c6b" size={150} loading={loading}/></div>)
       :(<div className='container'>
       <WeatherBox weather={weather}/>
-      <WeatherButton cities ={cities} setCity={setCity} />
+      <WeatherButton cities ={cities} handleCityChange={handleCityChange} selectedCity={city} />
       </div>)}
       
     </div>
